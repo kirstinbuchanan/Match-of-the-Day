@@ -7,11 +7,6 @@ interface TeamListProps {
   teamType: string;
 }
 const TeamList: FunctionComponent<TeamListProps> = ({ team, teamType }) => {
-  // const teamList = team.firstEleven;
-
-  // lastname, position or squad number.
-
-  console.log('team', team);
   return (
     <>
       <div>{teamType}</div>

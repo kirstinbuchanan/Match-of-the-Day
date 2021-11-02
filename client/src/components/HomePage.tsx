@@ -7,10 +7,9 @@ import { useQuery } from '@apollo/client';
 interface HomePageProps {}
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
-  const { loading, error, data } = useQuery(GET_MATCH);
+  const { loading, data } = useQuery(GET_MATCH);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return null;
 
   console.log('data', data.nextMatch);
   return (

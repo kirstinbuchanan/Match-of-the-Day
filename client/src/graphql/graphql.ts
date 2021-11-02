@@ -32,8 +32,8 @@ export const GET_MATCH = gql`
 `;
 
 export const GET_PLAYER = gql`
-  query findPlayer($findPlayerId: String) {
-    findPlayer(id: $findPlayerId) {
+  query findPlayerById($findPlayerByIdId: String!) {
+    findPlayerById(id: $findPlayerByIdId) {
       firstname
       lastname
       height

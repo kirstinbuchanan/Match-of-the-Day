@@ -1,16 +1,13 @@
 /// <reference path="./typings.d.ts"/>
 
-import { ApolloServer } from "apollo-server";
-import casual from "casual";
-import fs from "fs";
-import path from "path";
-import random_name from "node-random-name";
-import { getRandomDate } from "random-date-generator";
+import { ApolloServer } from 'apollo-server';
+import casual from 'casual';
+import fs from 'fs';
+import path from 'path';
+import random_name from 'node-random-name';
+import { getRandomDate } from 'random-date-generator';
 
-const typeDefs = fs.readFileSync(
-  path.join(__dirname, "schema.graphql"),
-  "utf8"
-);
+const typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf8');
 
 interface WithTypename {
   __typename: string;
@@ -44,12 +41,13 @@ const mocks = {
     const dateOfBirth = getRandomDate(startDOBDate, endDOBDate).toUTCString();
     const squadNumber = casual.integer(1, 25);
     const nationality = casual.country;
+    const height = (150 + Math.random() * 50).toFixed(2);
     const seed = `${dateOfBirth}:${squadNumber}:${nationality}`;
     return {
-      firstname: random_name({ gender: "male", first: true, seed }),
+      firstname: random_name({ gender: 'male', first: true, seed }),
       lastname: random_name({ last: true, seed }),
-      height: 150 + (Math.random() * 50).toFixed(2),
       dateOfBirth,
+      height,
       squadNumber,
       nationality,
     };
@@ -57,7 +55,7 @@ const mocks = {
   Team: () => ({
     name: casual.company_name,
     stadium: casual.city,
-    firstEleven: [...new Array(11)].map(() => ({ __typename: "Player" })),
+    firstEleven: [...new Array(11)].map(() => ({ __typename: 'Player' })),
   }),
   Match: () => ({
     date: new Date().toUTCString(),
@@ -73,7 +71,7 @@ const server = new ApolloServer({
 server
   .listen({
     port: 3001,
-    host: "0.0.0.0",
+    host: '0.0.0.0',
   })
   .then(({ url }) => {
     console.log(`🚀 Public mock graphql server ready at ${url}`);
