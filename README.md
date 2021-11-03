@@ -1,4 +1,4 @@
-## Match of the Day!
+# Match of the Day!
 
 ## Stack
 
@@ -8,6 +8,11 @@
 - Apollo Client
 - Moment
 
+## To Complete
+
+- Styling
+- Sorting players by lastname, position or squad number
+
 ## Insights
 
 - I chose against using Nexus or GraphQL Codegen as I was only making two queries in total
@@ -15,4 +20,6 @@
 
 ## Getting Started
 
-To get started, clone this repo
+1. Clone the repo.
+2. `cd` into client and server directories, and `npm i` dependencies
+3. Start the server with `npm start-server` and the client with `npm run start`
